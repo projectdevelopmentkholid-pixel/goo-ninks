@@ -19,7 +19,13 @@
       "Bash(mv \"id-11134207-81ztd-mepcrpkom6118f@resize_w450_nl.webp\"  \"product-4.webp\")",
       "Bash(mv \"id-11134207-7r98w-lnzbkivku45lfd.webp\"                 \"product-5.webp\")",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git config *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)"
     ]
   }
 }

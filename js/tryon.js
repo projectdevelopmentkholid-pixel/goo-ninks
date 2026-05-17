@@ -3,21 +3,7 @@
    File upload, thumbnail selection, canvas overlay, Mrs. Nining
    ============================================================ */
 
-const PRODUCTS = [
-  { id:1,  name:'Outer Batik Merah Hitam',    price:'Rp 850.000',  img:'assets/images/product-1.webp',  gradient:'linear-gradient(135deg,#1a0a0a,#4a0f0f,#8B1a1a)' },
-  { id:2,  name:'Outer Batik Hijau Tosca',    price:'Rp 820.000',  img:'assets/images/product-2.webp',  gradient:'linear-gradient(135deg,#0a1a15,#0f4a35,#1a8B6a)' },
-  { id:3,  name:'Outer Tenun Kombinasi',      price:'Rp 950.000',  img:'assets/images/product-3.webp',  gradient:'linear-gradient(135deg,#1a1500,#4a3a00,#C9A84C)' },
-  { id:4,  name:'Set Batik Merah Marun',      price:'Rp 1.250.000',img:'assets/images/product-4.webp',  gradient:'linear-gradient(135deg,#1a0510,#5a1020,#8B1535)' },
-  { id:5,  name:'Dress Kinanti Exclusive',    price:'Rp 365.000',  img:'assets/images/product-5.webp',  gradient:'linear-gradient(135deg,#0a150a,#1a4a2a,#2d8B50)' },
-  { id:6,  name:'Overall Lurik Tenun',        price:'Rp 750.000',  img:'assets/images/product-6.jfif',  gradient:'linear-gradient(135deg,#0f0f1a,#2a1a4a,#5a3d8B)' },
-  { id:7,  name:'Vest Tenun Hoodie',          price:'Rp 680.000',  img:'assets/images/product-7.webp',  gradient:'linear-gradient(135deg,#0a0f15,#1a2d4a,#2d508B)' },
-  { id:8,  name:'Outer Batik Hoodie Hijau',   price:'Rp 890.000',  img:'assets/images/product-8.webp',  gradient:'linear-gradient(135deg,#051a05,#0f4a15,#1a8B25)' },
-  { id:9,  name:'Outer Batik Hoodie Coklat',  price:'Rp 870.000',  img:'assets/images/product-9.webp',  gradient:'linear-gradient(135deg,#1a0f0a,#4a2a1a,#8B5535)' },
-  { id:10, name:'Outer Tenun Abu-abu',        price:'Rp 1.100.000',img:'assets/images/product-10.webp', gradient:'linear-gradient(135deg,#0f0f0f,#2a2a2a,#555555)' },
-  { id:11, name:'Set Tenun Pink Navy',        price:'Rp 1.450.000',img:'assets/images/product-11.webp', gradient:'linear-gradient(135deg,#0a0520,#2a0a4a,#6B1a8B)' },
-  { id:12, name:'Set Tenun Orange Mustard',   price:'Rp 1.350.000',img:'assets/images/product-12.webp', gradient:'linear-gradient(135deg,#1a0f00,#4a2a00,#C9A84C)' },
-  { id:13, name:'Outfit Couple Adiprana',     price:'Rp 1.800.000',img:'assets/images/product-13.jfif', gradient:'linear-gradient(135deg,#0f0f0f,#2a2a35,#4a4a6B)' },
-];
+/* PRODUCTS is defined in replicate.js, loaded before this file */
 
 let selectedFile = null;
 let selectedProduct = null;
@@ -134,74 +120,70 @@ function initTryOnBtn() {
 
     const lang = localStorage.getItem('goo-ninks-lang') || 'id';
     btn.disabled = true;
-    btn.textContent = lang === 'id' ? 'Sedang memproses...' : 'Processing...';
+    btn.textContent = lang === 'id'
+      ? 'Sabar ya... Mrs. Nining lagi milih angle terbaik buat kamu ✨'
+      : 'Just a moment... Mrs. Nining is finding your best angle ✨';
 
-    await simulateDelay(2000);
-    renderResult();
-
-    btn.disabled = false;
-    btn.textContent = lang === 'id' ? '✨ Coba Sekarang' : '✨ Try It On';
+    try {
+      const [humanB64, garmB64] = await Promise.all([
+        imageFileToBase64(selectedFile),
+        imageUrlToBase64(selectedProduct.img)
+      ]);
+      const prediction = await runTryOn(humanB64, garmB64, selectedProduct.name);
+      const resultUrl = Array.isArray(prediction.output) ? prediction.output[0] : prediction.output;
+      renderResult(resultUrl);
+    } catch (err) {
+      console.error('[GoO Ninks] tryon error:', err);
+      renderResult(null, err.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = lang === 'id' ? '✨ Coba Sekarang' : '✨ Try It On';
+    }
   });
 }
 
-function simulateDelay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function renderResult() {
+function renderResult(resultUrl, errorMsg) {
   const resultSection = document.getElementById('tryonResult');
   if (!resultSection) return;
 
   const canvas = document.getElementById('resultCanvas');
   if (canvas) {
     const lang = localStorage.getItem('goo-ninks-lang') || 'id';
-
-    // Remove canvas-area constraints — layout is now driven by content
     canvas.style.cssText = 'background:transparent;border:none;position:static;overflow:visible;aspect-ratio:auto;border-radius:0;';
 
-    canvas.innerHTML = `
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-
-        <div>
-          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:10px;">
-            ${lang === 'id' ? 'Foto Anda' : 'Your Photo'}
-          </div>
-          <div style="border-radius:10px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--border);">
-            <img id="resultUserImg" alt="Foto Anda" style="width:100%;height:100%;object-fit:cover;display:block;">
-          </div>
-        </div>
-
-        <div>
-          <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">
-            ${lang === 'id' ? 'Produk Pilihan Anda' : 'Your Chosen Piece'}
-          </div>
-          <div style="border-radius:10px;overflow:hidden;aspect-ratio:3/4;border:2px solid var(--gold);position:relative;background:${selectedProduct.gradient};">
-            <img src="${selectedProduct.img}" alt="${selectedProduct.name}"
-              style="width:100%;height:100%;object-fit:cover;display:block;"
-              onerror="this.style.display='none'">
-            <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.72));padding:20px 12px 14px;">
-              <div style="color:#fff;font-weight:600;font-size:0.82rem;margin-bottom:3px;">${selectedProduct.name}</div>
-              <div style="color:#C9A84C;font-size:0.78rem;font-weight:600;">${selectedProduct.price}</div>
+    if (errorMsg) {
+      canvas.innerHTML = `
+        <div style="padding:24px;background:rgba(180,50,50,0.08);border:1px solid rgba(180,50,50,0.25);border-radius:10px;text-align:center;color:#c04040;font-size:0.88rem;line-height:1.6;">
+          ${lang === 'id' ? 'Ups, coba lagi ya! Mrs. Nining lagi sibuk sebentar 😊' : 'Oops, please try again! Mrs. Nining is a little busy right now 😊'}<br>
+          <span style="font-size:0.78rem;opacity:0.75;">${errorMsg}</span>
+        </div>`;
+    } else {
+      canvas.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:10px;">
+              ${lang === 'id' ? 'Foto Anda' : 'Your Photo'}
+            </div>
+            <div style="border-radius:10px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--border);">
+              <img id="resultUserImg" alt="Foto Anda" style="width:100%;height:100%;object-fit:cover;display:block;">
             </div>
           </div>
-        </div>
+          <div>
+            <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">
+              ${lang === 'id' ? 'Hasil Try-On' : 'Try-On Result'}
+            </div>
+            <div style="border-radius:10px;overflow:hidden;aspect-ratio:3/4;border:2px solid var(--gold);">
+              <img src="${resultUrl}" alt="Hasil try-on" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+          </div>
+        </div>`;
 
-      </div>
-
-      <div style="text-align:center;margin-top:18px;padding:14px 20px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:8px;">
-        <span style="font-size:0.9rem;color:var(--text-secondary);font-style:italic;" data-id="✨ Bayangkan tampilan Anda dengan kain istimewa ini" data-en="✨ Imagine yourself in this exquisite piece">
-          ${lang === 'id' ? '✨ Bayangkan tampilan Anda dengan kain istimewa ini' : '✨ Imagine yourself in this exquisite piece'}
-        </span>
-      </div>
-    `;
-
-    // Set user photo after DOM is ready (avoids blob URL timing issue)
-    const userImgEl = canvas.querySelector('#resultUserImg');
-    if (userImgEl) userImgEl.src = URL.createObjectURL(selectedFile);
+      const userImgEl = canvas.querySelector('#resultUserImg');
+      if (userImgEl) userImgEl.src = URL.createObjectURL(selectedFile);
+    }
   }
 
-  showNiningDashboard();
-
+  if (!errorMsg) showNiningDashboard();
   resultSection.classList.add('show');
   resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

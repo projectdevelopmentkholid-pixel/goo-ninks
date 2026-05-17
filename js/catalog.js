@@ -50,13 +50,15 @@ function initCardLinks() {
     if (btn) {
       btn.addEventListener('click', e => {
         e.stopPropagation();
+        const pid = card.dataset.productId || '1';
         sessionStorage.setItem('goo-selected-product', JSON.stringify({
+          id: parseInt(pid),
           name: card.dataset.name || '',
           price: card.dataset.price || '',
           gradient: card.dataset.gradient || '',
           category: card.dataset.category || ''
         }));
-        window.location.href = 'checkout.html';
+        window.location.href = `product-detail.html?id=${pid}`;
       });
     }
 
