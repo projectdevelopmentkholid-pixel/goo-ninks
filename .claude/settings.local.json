@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\css\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\js\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\pages\")",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\assets\\\\images\")",
+      "Bash(Write-Host \"Directories created.\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\css\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\js\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\pages\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\assets\\\\images\")",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\" | Where-Object { !$_.PSIsContainer } | Select-Object FullName, @{N='Size';E={\"{0:N0} KB\" -f \\($_.Length/1KB\\)}})",
+      "PowerShell(New-Item -ItemType File -Force -Path \"C:\\\\Users\\\\KHOLID\\\\goo-ninks\\\\css\\\\style.css\")",
+      "Bash(mv \"id-11134207-7r98o-lymfjj786eam98@resize_w450_nl.webp\" \"product-1.webp\")",
+      "Bash(mv \"id-11134207-7r98s-lymfjj78j1gg24@resize_w450_nl.webp\"  \"product-2.webp\")",
+      "Bash(mv \"sg-11134201-7rdy0-lz3g87dakzzg8d@resize_w450_nl.webp\"  \"product-3.webp\")",
+      "Bash(mv \"id-11134207-81ztd-mepcrpkom6118f@resize_w450_nl.webp\"  \"product-4.webp\")",
+      "Bash(mv \"id-11134207-7r98w-lnzbkivku45lfd.webp\"                 \"product-5.webp\")",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

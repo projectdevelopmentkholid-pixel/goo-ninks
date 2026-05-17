@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mrs. Nining — GoO Ninks</title>
+  <meta name="description" content="Ngobrol dengan Mrs. Nining, stylist pribadi GoO Ninks. Dapatkan saran gaya, rekomendasi outfit, dan cerita di balik kain-kain istimewa kami.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">GoO Ninks</a>
+    <ul class="nav-menu">
+      <li><a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a></li>
+      <li><a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a></li>
+      <li><a href="tryon.html" data-id="Try-On" data-en="Try-On">Try-On</a></li>
+      <li><a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a></li>
+      <li><a href="heritage.html#tentang" data-id="Tentang" data-en="About">Tentang</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+      </div>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></button>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-lang">
+    <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+    <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+  </div>
+  <a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a>
+  <a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a>
+  <a href="tryon.html" data-id="Try-On" data-en="Try-On">Try-On</a>
+  <a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a>
+  <a href="heritage.html#tentang" data-id="Tentang" data-en="About">Tentang</a>
+</div>
+
+<!-- ── CHAT INTERFACE ── -->
+<div class="chat-wrapper">
+
+  <!-- Chat Header -->
+  <div class="chat-header">
+    <div class="chat-avatar">👩‍🦱</div>
+    <div class="chat-header-info">
+      <h3>Mrs. Nining</h3>
+      <div class="chat-status">
+        <div class="status-dot"></div>
+        <span data-id="Online — Siap membantu kamu!" data-en="Online — Here for you!">Online — Siap membantu kamu!</span>
+      </div>
+      <div class="chat-header-title" data-id="Stylist Pribadi GoO Ninks" data-en="GoO Ninks Personal Stylist">Stylist Pribadi GoO Ninks</div>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:8px;">
+      <a href="tryon.html" class="btn btn-outline-white btn-sm" style="font-size:0.72rem;padding:6px 14px;" data-id="Virtual Try-On" data-en="Virtual Try-On">✨ Try-On</a>
+      <a href="catalog.html" class="btn btn-gold btn-sm" style="font-size:0.72rem;padding:6px 14px;" data-id="Lihat Koleksi" data-en="View Collection">Lihat Koleksi</a>
+    </div>
+  </div>
+
+  <!-- Chat Area -->
+  <div class="chat-area" id="chatArea"></div>
+
+  <!-- Input Area -->
+  <div class="chat-input-area">
+    <!-- Quick Replies -->
+    <div class="quick-replies">
+      <button class="quick-btn"
+        data-id="Produk apa yang cocok buat kondangan?"
+        data-en="What suits a formal event?">Produk apa yang cocok buat kondangan?</button>
+      <button class="quick-btn"
+        data-id="Saran warna untuk kulit sawo matang"
+        data-en="Colors for warm skin tones">Saran warna untuk kulit sawo matang</button>
+      <button class="quick-btn"
+        data-id="Ceritain tentang Tenun Ikat"
+        data-en="Tell me about Tenun Ikat">Ceritain tentang Tenun Ikat</button>
+      <button class="quick-btn"
+        data-id="Saran outfit formal"
+        data-en="Formal outfit advice">Saran outfit formal</button>
+      <button class="quick-btn"
+        data-id="Ceritain tentang Batik"
+        data-en="Tell me about Batik">Ceritain tentang Batik</button>
+    </div>
+
+    <!-- Input Row -->
+    <div class="chat-input-row">
+      <input
+        type="text"
+        class="chat-input"
+        id="chatInput"
+        data-placeholder-id="Tanya apapun ke Mrs. Nining..."
+        data-placeholder-en="Ask Mrs. Nining anything..."
+        placeholder="Tanya apapun ke Mrs. Nining...">
+      <button class="chat-send" id="sendBtn" title="Kirim">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="chat-ai-note" data-id="(Mrs. Nining akan segera aktif dengan Gemini AI)" data-en="(Mrs. Nining will soon be powered by Gemini AI)">(Mrs. Nining akan segera aktif dengan Gemini AI)</div>
+  </div>
+
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

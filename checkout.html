@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — GoO Ninks</title>
+  <meta name="description" content="Pesan koleksi GoO Ninks — fashion warisan Nusantara Indonesia.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">GoO Ninks</a>
+    <ul class="nav-menu">
+      <li><a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a></li>
+      <li><a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a></li>
+      <li><a href="tryon.html" data-id="Try-On" data-en="Try-On">Try-On</a></li>
+      <li><a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a></li>
+      <li><a href="heritage.html#tentang" data-id="Tentang" data-en="About">Tentang</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+      </div>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></button>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-lang">
+    <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+    <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+  </div>
+  <a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a>
+  <a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a>
+  <a href="tryon.html" data-id="Try-On" data-en="Try-On">Try-On</a>
+  <a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a>
+  <a href="heritage.html#tentang" data-id="Tentang" data-en="About">Tentang</a>
+</div>
+
+<!-- ── CHECKOUT HEADER (dark stepper) ── -->
+<div class="checkout-header">
+  <div class="container">
+    <div class="checkout-stepper">
+      <div class="step-item active">
+        <div class="step-num">1</div>
+        <div class="step-label" data-id="Keranjang" data-en="Cart">Keranjang</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item active">
+        <div class="step-num">2</div>
+        <div class="step-label" data-id="Data Diri" data-en="Your Details">Data Diri</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item active">
+        <div class="step-num">3</div>
+        <div class="step-label" data-id="Pembayaran" data-en="Payment">Pembayaran</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-label" data-id="Konfirmasi" data-en="Confirmation">Konfirmasi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHECKOUT SECTION ── -->
+<section class="checkout-section">
+  <div class="container">
+
+    <!-- Layout -->
+    <div class="checkout-layout">
+
+      <!-- LEFT: Main Form -->
+      <div>
+
+        <!-- STEP 1: Ringkasan Produk -->
+        <div class="checkout-card">
+          <h3 data-id="🛍️ Ringkasan Pesanan" data-en="🛍️ Order Summary">🛍️ Ringkasan Pesanan</h3>
+
+          <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:24px;">
+            <div style="width:72px;height:90px;border-radius:8px;background:linear-gradient(135deg,#051a05,#0f4a15,#1a8B25);flex-shrink:0;" id="checkoutProductImg"></div>
+            <div style="flex:1;">
+              <div style="font-weight:700;margin-bottom:4px;font-size:0.95rem;" id="checkoutProductName">Outer Batik Hoodie Hijau</div>
+              <div style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:8px;" data-id="Kain Batik · Buatan Jawa" data-en="Batik Fabric · Made in Java">Kain Batik · Buatan Jawa</div>
+              <div style="color:var(--gold);font-weight:700;font-size:1rem;" id="checkoutProductPrice">Rp 890.000</div>
+            </div>
+          </div>
+
+          <!-- Pilih Ukuran -->
+          <div class="form-group">
+            <label data-id="Pilih Ukuran" data-en="Select Size">Pilih Ukuran</label>
+            <div class="size-pills">
+              <button class="size-pill" onclick="selectSize(this)">S</button>
+              <button class="size-pill" onclick="selectSize(this)">M</button>
+              <button class="size-pill active" onclick="selectSize(this)">L</button>
+              <button class="size-pill" onclick="selectSize(this)">XL</button>
+              <button class="size-pill" onclick="selectSize(this)">XXL</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Data Diri -->
+        <div class="checkout-card">
+          <h3 data-id="👤 Data Diri" data-en="👤 Your Details">👤 Data Diri</h3>
+
+          <div class="form-group">
+            <label data-id="Nama Lengkap" data-en="Full Name">Nama Lengkap</label>
+            <input type="text" class="form-input" data-placeholder-id="Masukkan nama lengkap kamu" data-placeholder-en="Enter your full name" placeholder="Masukkan nama lengkap kamu">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-id="Nomor WhatsApp" data-en="WhatsApp Number">Nomor WhatsApp</label>
+              <input type="tel" class="form-input" data-placeholder-id="08xx-xxxx-xxxx" data-placeholder-en="08xx-xxxx-xxxx" placeholder="08xx-xxxx-xxxx">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-input" data-placeholder-id="email@kamu.com" data-placeholder-en="your@email.com" placeholder="email@kamu.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-id="Alamat Lengkap" data-en="Full Address">Alamat Lengkap</label>
+            <textarea class="form-textarea" data-placeholder-id="Jl. Nama Jalan No. XX, RT/RW, Kelurahan, Kecamatan" data-placeholder-en="Street address, area, district" placeholder="Jl. Nama Jalan No. XX, RT/RW, Kelurahan, Kecamatan"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label data-id="Kota" data-en="City">Kota</label>
+              <input type="text" class="form-input" data-placeholder-id="Jakarta" data-placeholder-en="Jakarta" placeholder="Jakarta">
+            </div>
+            <div class="form-group">
+              <label data-id="Kode Pos" data-en="Postal Code">Kode Pos</label>
+              <input type="text" class="form-input" placeholder="12345" maxlength="5">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-id="Catatan untuk Penjual (opsional)" data-en="Note for Seller (optional)">Catatan untuk Penjual (opsional)</label>
+            <textarea class="form-textarea" style="min-height:64px;"
+              data-placeholder-id="Contoh: tolong dibungkus rapi ya kak, mau buat hadiah 🎁"
+              data-placeholder-en="E.g., please wrap it nicely, it's a gift 🎁"
+              placeholder="Contoh: tolong dibungkus rapi ya kak, mau buat hadiah 🎁"></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 3: Pembayaran -->
+        <div class="checkout-card">
+          <h3 data-id="💳 Metode Pembayaran" data-en="💳 Payment Method">💳 Metode Pembayaran</h3>
+
+          <div class="payment-option">
+            <div class="payment-icon">🏦</div>
+            <div>
+              <div class="payment-label" data-id="Transfer Bank" data-en="Bank Transfer">Transfer Bank</div>
+              <div class="payment-sub">BCA · BRI · Mandiri · BNI</div>
+            </div>
+            <span class="payment-cs" data-id="Segera Hadir" data-en="Coming Soon">Segera Hadir</span>
+          </div>
+
+          <div class="payment-option">
+            <div class="payment-icon">📱</div>
+            <div>
+              <div class="payment-label">QRIS</div>
+              <div class="payment-sub" data-id="Semua e-wallet & mobile banking" data-en="All e-wallets & mobile banking">Semua e-wallet & mobile banking</div>
+            </div>
+            <span class="payment-cs" data-id="Segera Hadir" data-en="Coming Soon">Segera Hadir</span>
+          </div>
+
+          <div class="payment-option">
+            <div class="payment-icon">💳</div>
+            <div>
+              <div class="payment-label" data-id="Kartu Kredit" data-en="Credit Card">Kartu Kredit</div>
+              <div class="payment-sub">Visa · Mastercard · JCB</div>
+            </div>
+            <span class="payment-cs" data-id="Segera Hadir" data-en="Coming Soon">Segera Hadir</span>
+          </div>
+
+          <div class="payment-option">
+            <div class="payment-icon">⏳</div>
+            <div>
+              <div class="payment-label">Pay Later</div>
+              <div class="payment-sub">Kredivo · Akulaku · GoPay Later</div>
+            </div>
+            <span class="payment-cs" data-id="Segera Hadir" data-en="Coming Soon">Segera Hadir</span>
+          </div>
+
+          <div style="margin-top:20px;padding:16px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:8px;font-size:0.85rem;color:var(--text-secondary);line-height:1.6;"
+            data-id="💬 Saat ini pemesanan diproses melalui WhatsApp. Mrs. Nining akan menghubungi kamu setelah konfirmasi pesanan untuk mengatur pembayaran."
+            data-en="💬 Currently, orders are processed via WhatsApp. Mrs. Nining will contact you after order confirmation to arrange payment.">
+            💬 Saat ini pemesanan diproses melalui WhatsApp. Mrs. Nining akan menghubungi kamu setelah konfirmasi pesanan untuk mengatur pembayaran.
+          </div>
+        </div>
+
+        <!-- STEP 4: Konfirmasi -->
+        <div class="checkout-card" style="border-top:3px solid var(--gold);">
+          <h3 data-id="✅ Konfirmasi Pesanan" data-en="✅ Confirm Order">✅ Konfirmasi Pesanan</h3>
+          <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:24px;line-height:1.7;"
+            data-id="Dengan mengklik tombol di bawah, kamu setuju bahwa pesanan ini akan diproses oleh tim GoO Ninks. Mrs. Nining akan segera menghubungi kamu via WhatsApp."
+            data-en="By clicking below, you agree that this order will be processed by the GoO Ninks team. Mrs. Nining will contact you shortly via WhatsApp.">
+            Dengan mengklik tombol di bawah, kamu setuju bahwa pesanan ini akan diproses oleh tim GoO Ninks. Mrs. Nining akan segera menghubungi kamu via WhatsApp.
+          </p>
+          <button class="btn btn-gold btn-lg btn-full" onclick="confirmOrder()">
+            <span data-id="Konfirmasi Pesanan" data-en="Confirm Order">Konfirmasi Pesanan</span>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Artisan note -->
+        <div class="checkout-artisan-note">
+          <span data-id="🧵 Setiap pembelian berkontribusi langsung pada kesejahteraan pengrajin lokal Nusantara" data-en="🧵 Every purchase directly supports the livelihoods of Indonesia's local artisans">🧵 Setiap pembelian berkontribusi langsung pada kesejahteraan pengrajin lokal Nusantara</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Order Summary Sidebar -->
+      <div class="order-summary">
+        <h3 data-id="Detail Pesanan" data-en="Order Details">Detail Pesanan</h3>
+
+        <div class="order-item">
+          <div class="order-item-img" id="sidebarProductImg"
+            style="background:linear-gradient(135deg,#051a05,#0f4a15,#1a8B25);"></div>
+          <div style="flex:1;">
+            <div class="order-item-name" id="sidebarProductName">Outer Batik Hoodie Hijau</div>
+            <div class="order-item-size" data-id="Ukuran: L" data-en="Size: L">Ukuran: L</div>
+          </div>
+          <div class="order-item-price" id="sidebarProductPrice">Rp 890.000</div>
+        </div>
+
+        <div class="order-line">
+          <span data-id="Subtotal" data-en="Subtotal">Subtotal</span>
+          <span id="subtotalVal">Rp 890.000</span>
+        </div>
+        <div class="order-line">
+          <span data-id="Ongkos Kirim" data-en="Shipping">Ongkos Kirim</span>
+          <span class="free" data-id="Gratis" data-en="Free">Gratis</span>
+        </div>
+        <div class="order-line">
+          <span data-id="Diskon" data-en="Discount">Diskon</span>
+          <span>—</span>
+        </div>
+        <div class="order-line total">
+          <span data-id="Total" data-en="Total">Total</span>
+          <span class="price" id="totalVal">Rp 890.000</span>
+        </div>
+
+        <div class="order-note">
+          <strong data-id="📦 Info Pengiriman" data-en="📦 Shipping Info">📦 Info Pengiriman</strong><br>
+          <span data-id="Ongkos kirim GRATIS untuk semua pesanan. Estimasi 3-7 hari kerja ke seluruh Indonesia." data-en="FREE shipping on all orders. Estimated 3-7 business days across Indonesia.">Ongkos kirim GRATIS untuk semua pesanan. Estimasi 3-7 hari kerja ke seluruh Indonesia.</span>
+        </div>
+
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border);">
+          <a href="chat.html" style="display:flex;align-items:center;gap:10px;font-size:0.82rem;color:var(--text-secondary);transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--text-secondary)'">
+            <span style="font-size:1.2rem;">👩‍🦱</span>
+            <span data-id="Butuh bantuan? Tanya Mrs. Nining!" data-en="Need help? Ask Mrs. Nining!">Butuh bantuan? Tanya Mrs. Nining!</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFIRMATION MODAL ── -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <div class="modal-icon">🌟</div>
+    <h2 data-id="Pesanan Diterima!" data-en="Order Received!">Pesanan Diterima!</h2>
+    <p data-id="Terima kasih! Pesanan kamu sudah kami terima. Mrs. Nining akan menghubungi kamu via WhatsApp dalam 1x24 jam untuk konfirmasi dan pembayaran. Kamu bakal dikabarin ya! 😊"
+       data-en="Thank you so much! Your order has been received. Mrs. Nining will contact you via WhatsApp within 24 hours for confirmation and payment. We'll be in touch! 😊">
+      Terima kasih! Pesanan kamu sudah kami terima. Mrs. Nining akan menghubungi kamu via WhatsApp dalam 1x24 jam untuk konfirmasi dan pembayaran. Kamu bakal dikabarin ya! 😊
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="btn btn-gold btn-lg" data-id="Kembali ke Beranda" data-en="Back to Home">Kembali ke Beranda</a>
+      <a href="chat.html" class="btn btn-outline-gold" data-id="Chat Mrs. Nining" data-en="Chat Mrs. Nining">Chat Mrs. Nining</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">GoO Ninks</span>
+        <p data-id="Fashion warisan Nusantara — merayakan keindahan kain lokal Indonesia dengan sentuhan kontemporer." data-en="Nusantara heritage fashion — celebrating the beauty of Indonesian local textiles with a contemporary touch.">Fashion warisan Nusantara — merayakan keindahan kain lokal Indonesia dengan sentuhan kontemporer.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-id="Navigasi" data-en="Navigation">Navigasi</h4>
+        <ul>
+          <li><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a></li>
+          <li><a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a></li>
+          <li><a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a></li>
+          <li><a href="tryon.html" data-id="Virtual Try-On" data-en="Virtual Try-On">Virtual Try-On</a></li>
+          <li><a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-id="Kontak" data-en="Contact">Kontak</h4>
+        <ul>
+          <li><a href="chat.html" data-id="Chat dengan Kami" data-en="Chat with Us">Chat dengan Kami</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram DM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-id="Ikuti Kami" data-en="Follow Us">Ikuti Kami</h4>
+        <div class="social-links">
+          <a href="#" class="social-link">📸</a>
+          <a href="#" class="social-link">🎵</a>
+          <a href="#" class="social-link">💬</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-id="© 2026 GoO Ninks — Merayakan Warisan Nusantara" data-en="© 2026 GoO Ninks — Celebrating the Soul of Nusantara">© 2026 GoO Ninks — Merayakan Warisan Nusantara</p>
+      <p data-id="Dibuat dengan ❤️ untuk Nusantara" data-en="Made with ❤️ for Nusantara">Dibuat dengan ❤️ untuk Nusantara</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  // Load product from sessionStorage
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = sessionStorage.getItem('goo-selected-product');
+    if (saved) {
+      try {
+        const p = JSON.parse(saved);
+        const nameEls = [document.getElementById('checkoutProductName'), document.getElementById('sidebarProductName')];
+        const priceEls = [document.getElementById('checkoutProductPrice'), document.getElementById('sidebarProductPrice'), document.getElementById('subtotalVal'), document.getElementById('totalVal')];
+        const imgEls = [document.getElementById('checkoutProductImg'), document.getElementById('sidebarProductImg')];
+        nameEls.forEach(el => { if (el) el.textContent = p.name; });
+        priceEls.forEach(el => { if (el) el.textContent = p.price; });
+        imgEls.forEach(el => { if (el && p.gradient) el.style.background = p.gradient; });
+      } catch(e) {}
+    }
+  });
+
+  function selectSize(btn) {
+    document.querySelectorAll('.size-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const lang = localStorage.getItem('goo-ninks-lang') || 'id';
+    const sizeLabel = document.querySelector('.order-item-size');
+    if (sizeLabel) {
+      sizeLabel.textContent = lang === 'id' ? `Ukuran: ${btn.textContent}` : `Size: ${btn.textContent}`;
+    }
+  }
+
+  function confirmOrder() {
+    const modal = document.getElementById('confirmModal');
+    if (modal) modal.classList.add('show');
+  }
+
+  document.getElementById('confirmModal')?.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('show');
+  });
+</script>
+</body>
+</html>

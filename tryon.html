@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Try-On — GoO Ninks</title>
+  <meta name="description" content="Coba pakaian GoO Ninks secara virtual sebelum membeli. Didukung saran dari Mrs. Nining, stylist pribadi GoO Ninks.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">GoO Ninks</a>
+    <ul class="nav-menu">
+      <li><a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a></li>
+      <li><a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a></li>
+      <li><a href="tryon.html" data-id="Try-On" data-en="Try-On">Try-On</a></li>
+      <li><a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a></li>
+      <li><a href="heritage.html#tentang" data-id="Tentang" data-en="About">Tentang</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+      </div>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg></button>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+      <button class="nav-icon-btn"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu">
+  <div class="mobile-lang">
+    <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+    <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+  </div>
+  <a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a>
+  <a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a>
+  <a href="tryon.html" data-id="Try-On" data-en="Try-On">Try-On</a>
+  <a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a>
+  <a href="heritage.html#tentang" data-id="Tentang" data-en="About">Tentang</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <h1>Virtual Try-On</h1>
+  <p data-id="Coba dulu sebelum memutuskan ✨" data-en="Try before you decide ✨">Coba dulu sebelum memutuskan ✨</p>
+  <div class="gold-divider"></div>
+</section>
+
+<!-- ── TRYON SECTION ── -->
+<section class="tryon-section">
+  <div class="container">
+
+    <div class="tryon-grid">
+
+      <!-- KOLOM KIRI: Upload Foto -->
+      <div>
+        <div class="tryon-col-label" data-id="Upload Foto Kamu" data-en="Upload Your Photo">Upload Foto Kamu</div>
+        <div class="upload-box" id="uploadBox">
+          <div class="upload-default" style="display:flex;flex-direction:column;align-items:center;">
+            <svg class="upload-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <div class="upload-text" data-id="Tap untuk upload foto kamu" data-en="Tap to upload your photo">Tap untuk upload foto kamu</div>
+            <div class="upload-sub" data-id="Foto tampak depan ya, biar hasilnya maksimal! ✨" data-en="Front-facing photo works best ✨">Foto tampak depan ya, biar hasilnya maksimal! ✨</div>
+            <div class="upload-format">JPG / PNG · Maks 5MB</div>
+          </div>
+          <div class="upload-overlay" data-id="Tap untuk ganti foto" data-en="Tap to change photo">Tap untuk ganti foto</div>
+        </div>
+        <input type="file" id="photoInput" accept="image/jpeg,image/png" style="display:none;">
+      </div>
+
+      <!-- KOLOM KANAN: Pilih Produk -->
+      <div>
+        <div class="tryon-col-label" data-id="Pilih Produk" data-en="Choose Your Piece">Pilih Produk</div>
+        <div class="product-thumb-grid" id="thumbGrid"></div>
+
+        <!-- Selected card -->
+        <div class="selected-product-card" id="selectedCard">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:1.1rem;">✓</span>
+            <div>
+              <div class="name">—</div>
+              <div class="price">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TRY ON BUTTON -->
+    <div class="tryon-action">
+      <button class="btn btn-gold btn-lg" id="tryBtn" disabled
+        data-id="✨ Coba Sekarang" data-en="✨ Try It On">✨ Coba Sekarang</button>
+      <p style="margin-top:12px;font-size:0.8rem;color:var(--text-secondary);" data-id="Upload foto & pilih produk terlebih dahulu" data-en="Upload photo & select a product first">Upload foto & pilih produk terlebih dahulu</p>
+    </div>
+
+    <!-- ── HASIL TRY-ON (hidden by default) ── -->
+    <div class="tryon-result" id="tryonResult">
+      <div class="tryon-result-grid">
+
+        <!-- Hasil Try-On -->
+        <div>
+          <div class="tryon-result-title" data-id="Perbandingan Tampilan" data-en="Style Comparison">Perbandingan Tampilan</div>
+          <div id="resultCanvas"></div>
+          <div class="canvas-actions" style="margin-top:16px;">
+            <button class="btn btn-gold btn-sm" style="flex:1;" onclick="goCheckout()">
+              <span data-id="🛍️ Pesan Sekarang" data-en="🛍️ Order Now">🛍️ Pesan Sekarang</span>
+            </button>
+            <a href="chat.html" class="btn btn-outline-gold btn-sm" style="flex:1;">
+              <span data-id="💬 Tanya Mrs. Nining" data-en="💬 Ask Mrs. Nining">💬 Tanya Mrs. Nining</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mrs. Nining Dashboard -->
+        <div class="nining-dashboard">
+          <div class="nining-dash-header">
+            <div class="nining-dash-avatar">👩‍🦱</div>
+            <div>
+              <div class="nining-dash-name">Mrs. Nining</div>
+              <div class="nining-dash-title" data-id="Stylist Pribadi GoO Ninks" data-en="GoO Ninks Personal Stylist">Stylist Pribadi GoO Ninks</div>
+            </div>
+          </div>
+
+          <!-- Placeholder before try-on -->
+          <div class="nining-dash-placeholder" id="niningPlaceholder">
+            <div class="placeholder-icon">👗</div>
+            <p data-id="Pilih produk dan coba sekarang untuk mendapat saran gaya dari Mrs. Nining!" data-en="Choose a product and try it on to get style advice from Mrs. Nining!">Pilih produk dan coba sekarang untuk mendapat saran gaya dari Mrs. Nining!</p>
+          </div>
+
+          <!-- Text shown after try-on -->
+          <div class="nining-dash-text" id="niningDashText">
+            <span data-id="Wah, seriously bagus banget pilihannya! 😍
+
+Kamu punya selera yang tinggi — ini tuh beneran cocok sama kamu. Potongannya flattering, motifnya kuat tapi tetap elegan di badan kamu.
+
+Saran dari saya: padukan dengan inner polos warna putih tulang atau krem, aksesori emas sederhana, dan sepatu block heel atau wedges.
+
+Kalau buat kondangan atau arisan, tambahkan clutch kecil warna gold atau coklat tua — kamu bakal jadi yang paling stylish di ruangan! ✨
+
+Percaya deh sama Mrs. Nining — kamu pilihan yang tepat!"
+data-en="Oh my, what an exquisite choice! 😍
+
+You clearly have wonderful taste — this piece was truly made for you. The silhouette is incredibly flattering, and the motif strikes that perfect balance between bold and refined.
+
+My recommendation: pair it with an ivory or cream inner layer, simple gold accessories, and block heels or wedges.
+
+For formal gatherings or social events, add a small gold or dark brown clutch — you will absolutely be the most elegantly dressed woman in the room. ✨
+
+Trust Mrs. Nining — you've made a perfect choice.">Wah, seriously bagus banget pilihannya! 😍
+
+Kamu punya selera yang tinggi — ini tuh beneran cocok sama kamu. Potongannya flattering, motifnya kuat tapi tetap elegan di badan kamu.
+
+Saran dari saya: padukan dengan inner polos warna putih tulang atau krem, aksesori emas sederhana, dan sepatu block heel atau wedges.
+
+Kalau buat kondangan atau arisan, tambahkan clutch kecil warna gold atau coklat tua — kamu bakal jadi yang paling stylish di ruangan! ✨
+
+Percaya deh sama Mrs. Nining — kamu pilihan yang tepat!</span>
+          </div>
+
+          <a href="chat.html" class="btn btn-gold btn-sm btn-full" id="niningDashBtn" style="display:none;">
+            <span data-id="💬 Tanya Mrs. Nining Lebih Lanjut" data-en="💬 Ask Mrs. Nining More">💬 Tanya Mrs. Nining Lebih Lanjut</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── COMING SOON CARDS ── -->
+    <div class="coming-soon-grid" style="margin-top:72px;">
+      <div class="cs-card reveal">
+        <div class="cs-icon">🔬</div>
+        <div class="cs-title" data-id="AI Skin Tone Analysis" data-en="AI Skin Tone Analysis">AI Skin Tone Analysis</div>
+        <p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:10px;" data-id="Analisis warna kulit otomatis untuk rekomendasi warna terbaik" data-en="Automatic skin tone analysis for best color recommendations">Analisis warna kulit otomatis untuk rekomendasi warna terbaik</p>
+        <span class="cs-badge" data-id="Segera Hadir" data-en="Coming Soon">Segera Hadir</span>
+      </div>
+      <div class="cs-card reveal">
+        <div class="cs-icon">👗</div>
+        <div class="cs-title" data-id="Rekomendasi Outfit Lengkap" data-en="Complete Outfit Recommendations">Rekomendasi Outfit Lengkap</div>
+        <p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:10px;" data-id="AI akan rekomendasikan aksesoris dan paduan lengkap" data-en="AI will recommend accessories and complete pairings">AI akan rekomendasikan aksesoris dan paduan lengkap</p>
+        <span class="cs-badge" data-id="Segera Hadir" data-en="Coming Soon">Segera Hadir</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">GoO Ninks</span>
+        <p data-id="Fashion warisan Nusantara — merayakan keindahan kain lokal Indonesia dengan sentuhan kontemporer." data-en="Nusantara heritage fashion — celebrating the beauty of Indonesian local textiles with a contemporary touch.">Fashion warisan Nusantara — merayakan keindahan kain lokal Indonesia dengan sentuhan kontemporer.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-id="Navigasi" data-en="Navigation">Navigasi</h4>
+        <ul>
+          <li><a href="index.html" data-id="Beranda" data-en="Home">Beranda</a></li>
+          <li><a href="catalog.html" data-id="Koleksi" data-en="Collection">Koleksi</a></li>
+          <li><a href="heritage.html" data-id="Heritage" data-en="Heritage">Heritage</a></li>
+          <li><a href="tryon.html" data-id="Virtual Try-On" data-en="Virtual Try-On">Virtual Try-On</a></li>
+          <li><a href="chat.html" data-id="Mrs. Nining" data-en="Mrs. Nining">Mrs. Nining</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-id="Kontak" data-en="Contact">Kontak</h4>
+        <ul>
+          <li><a href="chat.html" data-id="Chat dengan Kami" data-en="Chat with Us">Chat dengan Kami</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram DM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-id="Ikuti Kami" data-en="Follow Us">Ikuti Kami</h4>
+        <div class="social-links">
+          <a href="#" class="social-link">📸</a>
+          <a href="#" class="social-link">🎵</a>
+          <a href="#" class="social-link">💬</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-id="© 2026 GoO Ninks — Merayakan Warisan Nusantara" data-en="© 2026 GoO Ninks — Celebrating the Soul of Nusantara">© 2026 GoO Ninks — Merayakan Warisan Nusantara</p>
+      <p data-id="Dibuat dengan ❤️ untuk Nusantara" data-en="Made with ❤️ for Nusantara">Dibuat dengan ❤️ untuk Nusantara</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/tryon.js"></script>
+</body>
+</html>
